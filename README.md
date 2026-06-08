@@ -21,46 +21,13 @@ The goal of this project is to conduct a comprehensive analysis of Blinkit's sal
 ### 1. 🗄️ SQL (Data Extraction & Cleaning)
 * **Data Inspection:** Analyzed the initial dataset structure using baseline queries to understand rows and features.
   ```sql
-  Data Standardization & Cleaning: Identified inconsistencies in the Item_Fat_Content field where the same categories had multiple variations (e.g., 'LF', 'low fat', 'Low Fat', and 'reg'). Executed an UPDATE query with a CASE statement to standardize the values for uniform reporting.
-
-SQL
-UPDATE blinkit_data
+  SELECT * FROM blinkit_data;
+Data Standardization & Cleaning: Identified inconsistencies in the Item_Fat_Content field where the same categories had multiple variations (e.g., 'LF', 'low fat', 'Low Fat', and 'reg'). Executed an UPDATE query with a CASE statement to standardize the values for uniform reporting.SQLUPDATE blinkit_data
 SET Item_Fat_Content = 
     CASE 
         WHEN Item_Fat_Content IN ('LF', 'low fat') THEN 'Low Fat'
         WHEN Item_Fat_Content = 'reg' THEN 'Regular'
         ELSE Item_Fat_Content
     END;
-Data Verification: Confirmed the transformation using DISTINCT to ensure data integrity and uniformity before further processing.
-
-SQL
-SELECT DISTINCT Item_Fat_Content FROM blinkit_data;
-2. 📊 Microsoft Excel (Exploratory Data Analysis)
-Handled missing values, removed duplicates, and cross-checked key data metrics.
-
-Used formulas for initial data verification and quick summary statistics.
-   2. 📊 Microsoft Excel (Exploratory Data Analysis)
-Handled missing values, removed duplicates, and cross-checked key data metrics.
-
-Used formulas for initial data verification and quick summary statistics.
-
-3. 📉 Power BI (Data Modeling & Visualization)
-Built a dynamic, interactive dashboard to visualize Key Performance Indicators (KPIs).
-
-Implemented advanced DAX measures for complex calculations and dynamic reporting.
-
-Integrated slicers for real-time filtering by outlet location, size, and item type.
-
-📊 Key Metrics Tracked
-Total Sales: Overall revenue generated across different outlets.
-
-Average Sales: The average value per transaction.
-
-Number of Items: Total volume of grocery products sold.
-
-Average Rating: Customer satisfaction scores broken down by product categories.
-
-💡 Key Insights Discovered
-Product Performance: Identified which grocery categories (e.g., Snacks, Dairy, Fruits & Vegetables) drive the maximum revenue.
-
-Outlet Analysis: Compared sales performance across Tier 1, Tier 2, and Tier 3 cities, revealing that outlet size significantly impacts order volume.
+Data Verification: Confirmed the transformation using DISTINCT to ensure data integrity and uniformity before further processing.SQLSELECT DISTINCT Item_Fat_Content FROM blinkit_data;
+2. 📊 Microsoft Excel (Exploratory Data Analysis)Handled missing values, removed duplicates, and cross-checked key data metrics.Used formulas for initial data verification and quick summary statistics.    3. 📉 Power BI (Data Modeling & Visualization)Built a dynamic, interactive dashboard to visualize Key Performance Indicators (KPIs).Implemented advanced DAX measures for complex calculations and dynamic reporting.Integrated slicers for real-time filtering by outlet location, size, and item type.        📊 Key Metrics TrackedTotal Sales: Overall revenue generated across different outlets.Average Sales: The average value per transaction.Number of Items: Total volume of grocery products sold.Average Rating: Customer satisfaction scores broken down by product categories.                               💡 Key Insights DiscoveredProduct Performance: Identified which grocery categories (e.g., Snacks, Dairy, Fruits & Vegetables) drive the maximum revenue.Outlet Analysis: Compared sales performance across Tier 1, Tier 2, and Tier 3 cities, revealing that outlet size significantly impacts order volume.Customer Feedback: Mapped lower-rated items to help inventory managers improve product quality and delivery standards.
