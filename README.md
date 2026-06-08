@@ -22,16 +22,15 @@ The goal of this project is to conduct a comprehensive analysis of Blinkit's sal
 * **Data Inspection:** Analyzed the initial dataset structure using baseline queries to understand rows and features.
   ```sql
   SELECT * FROM blinkit_data;UPDATE blinkit_data
-
   
+UPDATE blinkit_data
 SET Item_Fat_Content = 
     CASE 
         WHEN Item_Fat_Content IN ('LF', 'low fat') THEN 'Low Fat'
         WHEN Item_Fat_Content = 'reg' THEN 'Regular'
-        ELSE Item_Fat_Content                                                                               END; 
-
-        
-         2. 📊 Microsoft Excel (Exploratory Data Analysis)
+        ELSE Item_Fat_Content
+    END;
+   2. 📊 Microsoft Excel (Exploratory Data Analysis)
 Handled missing values, removed duplicates, and cross-checked key data metrics.
 
 Used formulas for initial data verification and quick summary statistics.
