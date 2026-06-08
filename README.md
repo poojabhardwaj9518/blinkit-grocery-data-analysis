@@ -21,8 +21,9 @@ The goal of this project is to conduct a comprehensive analysis of Blinkit's sal
 ### 1. 🗄️ SQL (Data Extraction & Cleaning)
 * **Data Inspection:** Analyzed the initial dataset structure using baseline queries to understand rows and features.
   ```sql
-  SELECT * FROM blinkit_data;UPDATE blinkit_data
-  
+  Data Standardization & Cleaning: Identified inconsistencies in the Item_Fat_Content field where the same categories had multiple variations (e.g., 'LF', 'low fat', 'Low Fat', and 'reg'). Executed an UPDATE query with a CASE statement to standardize the values for uniform reporting.
+
+SQL
 UPDATE blinkit_data
 SET Item_Fat_Content = 
     CASE 
@@ -30,6 +31,14 @@ SET Item_Fat_Content =
         WHEN Item_Fat_Content = 'reg' THEN 'Regular'
         ELSE Item_Fat_Content
     END;
+Data Verification: Confirmed the transformation using DISTINCT to ensure data integrity and uniformity before further processing.
+
+SQL
+SELECT DISTINCT Item_Fat_Content FROM blinkit_data;
+2. 📊 Microsoft Excel (Exploratory Data Analysis)
+Handled missing values, removed duplicates, and cross-checked key data metrics.
+
+Used formulas for initial data verification and quick summary statistics.
    2. 📊 Microsoft Excel (Exploratory Data Analysis)
 Handled missing values, removed duplicates, and cross-checked key data metrics.
 
